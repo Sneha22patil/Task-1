@@ -3,7 +3,7 @@
 
 # In[1]:
 
-
+#importing modules
 import pandas as pd
 
 
@@ -17,13 +17,13 @@ df.head()
 
 # In[3]:
 
-
+#checking for null values
 df.isnull()
 
 
 # In[4]:
 
-
+#deleting duplicate values
 df.drop_duplicates()
 
 
@@ -35,7 +35,7 @@ import string, unicodedata
 
 # In[6]:
 
-
+#standardizing text values
 def standardize_text(text):
     text = str(text).lower()
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode()
@@ -66,7 +66,7 @@ df['No-show']
 
 # In[12]:
 
-
+#converting date formats to a consistent type
 df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'])
 df['ScheduledDay'] = df['ScheduledDay'].dt.strftime('%d-%m-%Y')
 
@@ -86,7 +86,7 @@ df.head(15)
 
 # In[21]:
 
-
+#renaming column headers 
 df.columns = (
     df.columns
     .str.strip()                      # remove leading/trailing spaces
@@ -103,13 +103,13 @@ df
 
 # In[24]:
 
-
+#checking data types
 df.dtypes
 
 
 # In[31]:
 
-
+#fixing data types
 df['scheduledday'] = pd.to_datetime(df['scheduledday'], dayfirst=True)
 df['scheduledday']
 
